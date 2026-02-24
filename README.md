@@ -1,4 +1,4 @@
-# POS Venezuela 🇻🇪
+# POS Venezuela
 
 Sistema de Punto de Venta (POS) diseñado para negocios en Venezuela, desarrollado en Python con la librería PyQt6 para la interfaz gráfica.
 
@@ -19,4 +19,5 @@ Sistema de Punto de Venta (POS) diseñado para negocios en Venezuela, desarrolla
 
 Para instalar las dependencias, ejecuta en la terminal:
 ```bash
+
 pip install PyQt6 requests
