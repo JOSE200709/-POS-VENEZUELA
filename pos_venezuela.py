@@ -186,7 +186,6 @@ class Dashboard(QWidget):
             if stats_res.status_code == 200:
                 self.stats = stats_res.json()
                 self.update_card_values()
-                # Actualizar modo de trabajo a ONLINE
                 self.layout().itemAt(2).layout().itemAt(5).widget().layout().itemAt(1).widget().setText("ONLINE")
         except:
             pass
@@ -263,7 +262,6 @@ class ExchangeRateManager(QWidget):
         update_btn.clicked.connect(self.handle_update)
         form_layout.addWidget(update_btn)
 
-        # Nueva función: Calcular precio en Bs a partir de USD
         calc_group = QGroupBox("Calculadora Rápida")
         calc_group.setFont(QFont("Arial", 12))
         calc_layout = QHBoxLayout(calc_group)
@@ -299,7 +297,6 @@ class ExchangeRateManager(QWidget):
         try:
             new_rate = self.rate_input.value()
             self.current_rate = new_rate
-            # Guardar en servidor si hay conexión
             try:
                 requests.put(
                     f"{CONFIG['BASE_API_URL']}/exchange",
@@ -308,7 +305,6 @@ class ExchangeRateManager(QWidget):
                 QMessageBox.information(self, "Éxito", "Tasa actualizada correctamente y guardada en servidor")
             except:
                 QMessageBox.information(self, "Éxito", "Tasa actualizada localmente (sin conexión al servidor)")
-            # Actualizar calculadora
             self.calculate_bs()
         except Exception as e:
             QMessageBox.critical(self, "Error", f"No se pudo actualizar la tasa: {str(e)}")
@@ -324,12 +320,11 @@ class ProductsManager(QWidget):
     def __init__(self):
         super().__init__()
         self.products = [
-            # Datos de prueba para cuando no haya conexión
             {"id": 1, "name": "Coca-Cola 600ml", "category": "Bebidas", "price_usd": 0.50, "price_bs": 18.25, "stock": 50},
             {"id": 2, "name": "Pan Blanco 1kg", "category": "Alimentos", "price_usd": 0.30, "price_bs": 10.95, "stock": 30}
         ]
         self.init_ui()
-        self.load_products()
+        self.load_products_to_table()
 
     def init_ui(self):
         main_layout = QVBoxLayout(self)
@@ -340,9 +335,17 @@ class ProductsManager(QWidget):
         title_label.setFont(QFont("Arial", 22, QFont.Weight.Bold))
         main_layout.addWidget(title_label)
 
-        # Formulario
         form_frame = QFrame()
         form_frame.setStyleSheet("""
             QFrame {
                 background-color: white;
                 border-radius: 8px;
+                padding: 20px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                border: 1px solid #eee;
+            }
+        """)
+        form_layout = QVBoxLayout(form_frame)
+        form_layout.setSpacing(12)
+
+        self.name
