@@ -4,6 +4,10 @@ Sistema de Punto de Venta (POS) diseñado para negocios en Venezuela, desarrolla
 
 
 ## 📋 CARACTERÍSTICAS PRINCIPALES
+- Modo offline (funciona sin conexión a internet).
+- Calculadora rápida para convertir precios entre USD y Bs.
+- Datos de prueba incluidos para probar el sistema inmediatamente.
+- Interfaz moderna y fácil de usar.
 - Interfaz intuitiva y adaptada a necesidades locales.
 - Gestión de productos (registro, edición y seguimiento de stock).
 - Control de tasa de cambio USD/Bs.
@@ -21,3 +25,4 @@ Para instalar las dependencias, ejecuta en la terminal:
 ```bash
 
 pip install PyQt6 requests
+
